@@ -31,6 +31,12 @@ plt.show()
 #Get the Adjacency Matrix (A) and Node Features Matrix (X) as numpy array
 A = np.array(nx.attr_matrix(G, node_attr='name')[0])
 X = np.array(nx.attr_matrix(G, node_attr='name')[1])
+X = np.expand_dims(X,axis=1)
+
+print('Shape of A_hat: ', A_hat.shape)
+print('Shape of X: ', X.shape)
+print('Adjacency Matrix (A): ', A)
+print('Node Features Matrix (X): ', X)
 
 
 #Dot product Adjacency Matrix (A) and Node Features (X)
@@ -73,11 +79,6 @@ print('Degree Matrix of added self-loops G as numpy array (D): ', D)
 #Find the inverse of Degree Matrix (D)
 D_inv = np.linalg.inv(D)
 print('Inverse of D: ', D_inv)
-
-
-print('Shape of A_hat: ', A_hat.shape)
-print('Shape of X: ', X.shape)
-X = np.expand_dims(X,axis=1)
 
 
 #Normalized AX
