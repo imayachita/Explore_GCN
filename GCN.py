@@ -33,7 +33,7 @@ A = np.array(nx.attr_matrix(G, node_attr='name')[0])
 X = np.array(nx.attr_matrix(G, node_attr='name')[1])
 X = np.expand_dims(X,axis=1)
 
-print('Shape of A_hat: ', A_hat.shape)
+print('Shape of A: ', A.shape)
 print('Shape of X: ', X.shape)
 print('Adjacency Matrix (A): ', A)
 print('Node Features Matrix (X): ', X)
@@ -87,8 +87,8 @@ print('Normalized AX: ', DAX)
 
 #Symmetrically-normalized AX
 D_half_norm = fractional_matrix_power(D, -0.5)
-DAXD = np.dot(np.dot(D_half_norm,A_hat_X),D_half_norm)
-print('Symmetrically-normalized AX: ', DAXD)
+DADX = D_half_norm.dot(A_hat).dot(D_half_norm).dot(X)
+print('Symmetrically-normalized AX: ', DADX)
 
 #Initialize the weights
 np.random.seed(77777)
